@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{details.name}}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="header">
+            <div class="title">
+                <a href="/" class="main-page-logo">
+                    <h1>WoosuMarket.com</h1>
+                </a>
+            </div>
+        </div>
+        <div class="item-large-index">
+            <img src="{{ url_for('static', filename=details.imagefile) }}" alt="product-image" height="550" width="727">
+            <div class="detail-info">
+                <h1>{{details.name}}</h1>
+                <br><br>
+                <h5>Price: ${{details.price}}</h5>
+                <h5>Rating: {{details.rating}}★</h5>
+                <br><br>
+                <form method="POST">
+                    <label><b>Quantity:</b></label>
+                    <input type="number" class="quantity" name="quantity" min="1" max="20" required placeholder="Enter here."><br><br>
+                    <label><b>Shipping options</b></label>
+                    <select class="shipping" name="shipping" required>
+                        <option>1-2 days later: $7</option>
+                        <option>4-5 days later: $4</option>
+                        <option>+7 days later: Free shipping</option>
+                    </select>
+                    <br><br><br>
+                    <button type="submit" class="add-to-cart">Add to Cart!</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

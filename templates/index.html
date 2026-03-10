@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WoosuMarket</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="header">
+            <div class="title">
+                <a href="/" class="main-page-logo">
+                    <h1>WoosuMarket.com</h1>
+                </a>
+            </div>
+            <div class="cart">
+                <a href="/cart" class="cart-logo">
+                    <h3>My Cart</h3>
+                </a>
+            </div>
+        </div>
+        <div class="items">
+            {% for info in items %}
+                <a href="{{ url_for('detail', item_num=info.id) }}">
+                    <div class="item_index">
+                        <img src="{{ url_for('static', filename=info.imagefile) }}" alt="imagefile" height="275" width="400">
+                        <div class="description">
+                            <h5>{{info.name}}</h5>
+                            <h5>${{info.price}}</h5><br><br>
+                            <h5>Click to add to cart.</h5>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>   
+    </body>
+</html>

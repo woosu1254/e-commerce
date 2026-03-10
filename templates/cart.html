@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cart</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="header">
+            <div class="title">
+                <a href="/" class="main-page-logo">
+                    <h1>WoosuMarket.com</h1>
+                </a>
+            </div>
+            <div class="cart">
+                <a href="/cart" class="cart-logo">
+                    <h3>My Cart</h3>
+                </a>
+            </div>
+        </div>
+        <div class="sum_cost">
+            <h1>Cost of products in cart</h1>
+            <h1>${{cost_sum}}</h1>
+        </div>
+        <div class="items">
+            {% for info in range(length) %}
+                <a href="{{ url_for('remove', index=info) }}">
+                    <div class="item_index">
+                        <img src="{{ url_for('static', filename=cart_name_list[info].imagefile) }}" alt="imagefile" height="275" width="400">
+                        <div class="description">
+                            <h5>{{cart_name_list[info].name}}</h5>
+                            <h5>${{cart_name_list[info].price}} (Sum: ${{cart_cost_list[info]}})</h5>
+                            <h5>Quantity: {{cart_other_info[info][0]}}</h5>
+                            <h5>Shipping fee: ${{cart_other_info[info][1]}}</h5>
+                            <h5>Click to remove.</h5>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>   
+    </body>
+</html>
